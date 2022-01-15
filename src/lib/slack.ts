@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getRealTimeDatabase } from "my-utils"
 
 export class SlackNotifier {
     constructor(private path: string){}
@@ -18,4 +19,10 @@ export class SlackNotifier {
         }
         return result
     }
+}
+
+export async function getSlackNotifier (channel: string): Promise<SlackNotifier> {
+    const rdb = await getRealTimeDatabase()
+    const ch = await rdb.get(await rdb.getReference('settings/slack/webhook/' + channel)) as string
+    return new SlackNotifier(ch)
 }
