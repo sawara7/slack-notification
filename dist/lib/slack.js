@@ -12,7 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getSlackNotifier = exports.SlackNotifier = void 0;
 const axios_1 = __importDefault(require("axios"));
+const my_utils_1 = require("my-utils");
 class SlackNotifier {
     constructor(path) {
         this.path = path;
@@ -27,7 +29,7 @@ class SlackNotifier {
             }
             catch (e) {
                 if (e instanceof Error) {
-                    result = e.name + ' ' + e.message;
+                    result = e.message;
                 }
             }
             return result;
@@ -35,9 +37,11 @@ class SlackNotifier {
     }
 }
 exports.SlackNotifier = SlackNotifier;
-const notifier = new SlackNotifier('https://hooks.slack.com/services/T8MSC4BU/B02R7TRN53P/JIzG2VmYsOTzfXUGil2sov5S');
-notifier.sendMessage('hi');
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield notifier.sendMessage("aaa");
-    console.log(res);
-}))();
+function getSlackNotifier(channel) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const rdb = yield (0, my_utils_1.getRealTimeDatabase)();
+        const ch = yield rdb.get(yield rdb.getReference('settings/slack/webhook/' + channel));
+        return new SlackNotifier(ch);
+    });
+}
+exports.getSlackNotifier = getSlackNotifier;

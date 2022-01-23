@@ -18,6 +18,7 @@
     "axios": "^0.24.0"
   },
   "devDependencies": {
+    "typescript": "^4.3.5",
     "@types/node": "^17.0.1",
     "my-utils": "github:sawara7/my-utils"
   }

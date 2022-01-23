@@ -3,3 +3,4 @@ export declare class SlackNotifier {
     constructor(path: string);
     sendMessage(message: string): Promise<string>;
 }
+export declare function getSlackNotifier(channel: string): Promise<SlackNotifier>;
