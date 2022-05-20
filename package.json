@@ -15,11 +15,11 @@
   "license": "ISC",
   "bundleDependencies": false,
   "dependencies": {
-    "axios": "^0.24.0"
+    "axios": "^0.24.0",
+    "firebase-utils-server": "github:sawara7/firebase-utils-server"
   },
   "devDependencies": {
-    "typescript": "^4.3.5",
     "@types/node": "^17.0.1",
-    "my-utils": "github:sawara7/my-utils"
+    "typescript": "^4.3.5"
   }
 }

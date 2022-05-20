@@ -1,5 +1,5 @@
 import axios from "axios"
-import { getRealTimeDatabase } from "my-utils"
+import { getRealTimeDatabase } from "firebase-utils-server"
 
 export class SlackNotifier {
     constructor(private path: string){}
