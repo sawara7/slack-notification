@@ -12,9 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSlackNotifier = exports.SlackNotifier = void 0;
+exports.SlackNotifier = void 0;
 const axios_1 = __importDefault(require("axios"));
-const firebase_utils_server_1 = require("firebase-utils-server");
 class SlackNotifier {
     constructor(path) {
         this.path = path;
@@ -37,11 +36,3 @@ class SlackNotifier {
     }
 }
 exports.SlackNotifier = SlackNotifier;
-function getSlackNotifier(channel) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const rdb = yield (0, firebase_utils_server_1.getRealTimeDatabase)();
-        const ch = yield rdb.get(yield rdb.getReference('settings/slack/webhook/' + channel));
-        return new SlackNotifier(ch);
-    });
-}
-exports.getSlackNotifier = getSlackNotifier;

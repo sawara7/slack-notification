@@ -12,11 +12,10 @@
     "url": "git+https://github.com/sawara7/slack-notification.git"
   },
   "author": "sawara7",
-  "license": "ISC",
+  "license": "MIT",
   "bundleDependencies": false,
   "dependencies": {
-    "axios": "^0.24.0",
-    "firebase-utils-server": "github:sawara7/firebase-utils-server"
+    "axios": "^0.24.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.1",
